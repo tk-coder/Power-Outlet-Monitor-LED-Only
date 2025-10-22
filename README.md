@@ -1,42 +1,42 @@
 # 🔌 Power Outlet Monitor – LED Only (Arduino Nano)
 
-En enkel och pålitlig **strömövervakningsindikator** byggd med **Arduino Nano**.  
-Projektet använder två lysdioder (röd och grön) och en knapp för att indikera **strömstatus** och **bekräfta larm** — helt utan skärm.
+A simple and reliable **power status indicator** built with **Arduino Nano**.  
+The project uses two LEDs (red and green) and a button to indicate **power status** and **alarm confirmation** — no display required.
 
 ---
 
-## ✨ Funktioner
+## ✨ Features
 
-- 🔴 **Röd LED**
-  - Börjar blinka snabbt (~10 Hz) när systemet startas.  
-  - Blinkfrekvensen saktar gradvis ner till 1 Hz under en timme.  
-  - Indikerar aktivt larm eller opålitlig strömkälla.
+- 🔴 **Red LED**
+  - Starts with fast blinking (~10 Hz) when the system powers on.  
+  - Gradually slows down to 1 Hz over the course of one hour.  
+  - Indicates an active alarm or unstable power state.
 
-- 🟢 **Grön LED**
-  - Tänds med konstant ljusstyrka när användaren bekräftar larmet.  
-  - Använder PWM-pin D10 för att kunna justera ljusnivå.
+- 🟢 **Green LED**
+  - Turns on at a constant brightness when the alarm is confirmed.  
+  - Uses PWM pin D10 for adjustable brightness control.
 
-- 🔘 **Knapp (A2)**
-  - Bekräftar larmet när den trycks in (intern pull-up).  
-  - Stänger av röd LED och aktiverar grön LED.
-
----
-
-## ⚙️ Hårdvaruanslutningar
-
-| Komponent | Arduino-pin | Funktion |
-|------------|-------------|----------|
-| Röd LED    | D11         | Blinkande larmindikator |
-| Grön LED   | D10 (PWM)   | Konstant ljus efter bekräftelse |
-| Intern LED | D13         | Speglar röd LED |
-| Knapp      | A2          | Alarm-bekräftelse (pull-up) |
+- 🔘 **Button (A2)**
+  - Confirms the alarm when pressed (using internal pull-up).  
+  - Turns off the red LED and activates the green LED.
 
 ---
 
-## 💡 Justerbara parametrar
+## ⚙️ Hardware Connections
 
-I koden kan du enkelt ändra:
+| Component | Arduino Pin | Function |
+|------------|--------------|-----------|
+| Red LED    | D11          | Blinking alarm indicator |
+| Green LED  | D10 (PWM)    | Constant light after confirmation |
+| Internal LED | D13        | Mirrors red LED |
+| Button     | A2           | Alarm confirmation (pull-up) |
+
+---
+
+## 💡 Adjustable Parameters
+
+You can easily modify these values in the code:
 
 ```cpp
-const int GREEN_BRIGHTNESS = 80;   // ljusstyrka 0–255
-const unsigned long RAMP_DURATION = 3600000UL; // tid till långsam blinkning (1 h)
+const int GREEN_BRIGHTNESS = 80;   // brightness 0–255
+const unsigned long RAMP_DURATION = 3600000UL; // time until slow blink (1 hour)
